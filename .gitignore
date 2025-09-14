@@ -1,1 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
 
+# Virtual environment
+venv/
+env/
+
+# Credentials and OAuth tokens
+credentials.json
+oauth2.json
+
+# Video output
+clips/
+*.mp4
+
+# System files
+.DS_Store
