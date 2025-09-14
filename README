@@ -1,1 +1,69 @@
+# Xavier Thee Second: YouTube Viral Video Clipper & Auto-Poster
 
+This project automatically downloads YouTube videos, detects viral moments, creates clips, and uploads them to your YouTube channel.
+
+## Features
+
+- Download videos from YouTube
+- Detect and extract viral clips (audio-based viral detection)
+- Auto-upload clips to your channel with the YouTube Data API
+
+## Requirements
+
+- Python 3.8+
+- Google Cloud project with YouTube Data API v3 enabled
+- OAuth client credentials (`credentials.json` file)
+
+## Setup
+
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/xavier236/xavier-thee-second.git
+    cd xavier-thee-second
+    ```
+
+2. **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Obtain YouTube API credentials (`credentials.json`)**
+
+    - Go to the [Google Cloud Console](https://console.cloud.google.com/).
+    - Create or select a project.
+    - Enable the **YouTube Data API v3** for your project.
+    - In the sidebar, go to **APIs & Services > Credentials**.
+    - Click **Create Credentials** > **OAuth client ID**.
+    - Select **Desktop app** as the application type.
+    - Name the client (e.g., "YouTube Viral Clipper"), and click **Create**.
+    - Download the `credentials.json` file and place it in the root of this repository (it is already in `.gitignore`).
+
+    **Note:** This file is sensitive—do not share or commit it.
+
+4. **Edit `main.py`**
+    - Add YouTube video URLs to the `VIDEO_URLS` list near the top of `main.py`.
+
+5. **Run the script**
+    ```bash
+    python main.py
+    ```
+    - On first run, a browser window will open for Google authentication.
+    - `oauth2.json` will be created for future runs.
+
+6. **Check the `clips/` folder**
+    - Clipped videos will be saved locally before upload.
+
+## Notes
+
+- The viral clip detection uses audio volume spikes to find highlights. You can further improve this by combining with scene/keyword detection.
+- The script uploads clips as public videos. You can change the privacy in the `upload_clip` function in `main.py`.
+- Your `credentials.json` and `oauth2.json` are sensitive; keep them private.
+
+## Troubleshooting
+
+- If you get authentication errors, delete `oauth2.json` and re-run the script.
+- Make sure your Google Cloud project has the YouTube Data API enabled.
+
+## License
+
+MIT License
